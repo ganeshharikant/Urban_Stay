@@ -1,0 +1,32 @@
+<% layout("./layouts/boilerplate") %>
+
+<div class="container mt-4">
+  <h1 class="mb-4">Welcome, <%= currentUser.username %> 👋</h1>
+  <h3 class="mb-4">Your Listings</h3>
+
+  <% if (myListings.length === 0) { %>
+    <div class="alert alert-info">
+      You haven’t created any listings yet.
+      <a href="/listings/new" class="ms-1">Create one now →</a>
+    </div>
+  <% } else { %>
+    <div class="row g-4">
+      <% myListings.forEach(listing => { %>
+        <div class="col-md-6 col-lg-4">
+          <div class="card shadow-sm p-3">
+            <h5><strong><%= listing.title %></strong></h5>
+            <p><i class="bi bi-geo-alt-fill"></i> <%= listing.location %></p>
+            <div class="d-flex justify-content-between mt-3">
+              <form method="get" action="/listings/<%= listing._id %>/edit">
+                <button class="btn btn-edit">✏️ Edit</button>
+              </form>
+              <form method="post" action="/listings/<%= listing._id %>?_method=DELETE">
+                <button class="btn btn-delete">❌ Delete</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  <% } %>
+</div>

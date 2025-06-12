@@ -1,0 +1,79 @@
+<% layout('/layouts/boilerplate') %>
+
+<body>
+    <br/>
+    <br/>
+<div class="row col-8 offset-2">
+<h1>Edit Listing</h1>
+<form method="post" action="/listings/<%= listing._id%>?_method=PUT" novalidate class="needs-validation" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label class="form-label">Title</label>
+        <input name="listing[title]" placeholder="Enter title" class="form-control" value="<%=listing.title%>" required>
+        <div class="valid-feedback">
+            Title looks good!
+            </div>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Description</label>
+        <textarea name="listing[description]" placeholder="Enter description" class="form-control" required><%=listing.description%></textarea>
+        <div class="valid-feedback">
+        Description looks good!
+        </div>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Current listing image</label>
+        <div class="col-6">
+        <img src=" <%= ogurl %>" class="card-img-top" alt="listing-Image">
+         </div>
+        <label class="form-label">Upload Image</label>
+        <input name="listing[image]" placeholder="Enter Image Url" class="form-control" type="file">
+    </div>
+    <div class="mb-3 mt-3">
+        <label for="category">Category</label>
+        <select id="category" name="listing[category]" class="form-control" required>
+          <option value="" disabled selected>Select a category</option>
+          <option value="Trending">Trending</option>
+          <option value="Rooms">Rooms</option>
+          <option value="City">City</option>
+          <option value="Mountain">Mountain</option>
+          <option value="AmazingPools">Amazing Pools</option>
+          <option value="Camp">Camp</option>
+          <option value="Beachfront">Beachfront</option>
+          <option value="Farm">Farm</option>
+          <option value="Boat">Boat</option>
+          <option value="Lakeview">Lakeview</option>
+        </select>
+        <div class="invalid-feedback">
+          Please select a category.
+        </div>
+      </div>
+    <div class="mb-3">
+        <label class="form-label">Price</label>
+        <input name="listing[price]" placeholder="Enter Price" class="form-control" value="<%=listing.price%>" required>
+        <div class="invalid-feedback">
+            Price should be valid 
+        </div>
+    </div>
+    <div class="row">
+        <div class="mb-3 col-md-8">
+            <label class="form-label">Loaction</label>
+            <input name="listing[location]" placeholder="Enter Location" class="form-control" value="<%=listing.location%>" required>
+            <div class="invalid-feedback">
+                Location should be valid 
+            </div>
+        </div>
+        <div class="mb-3 col-md-4">
+            <label class="form-label">Country</label>
+            <input name="listing[country]" placeholder="Enter country" class="form-control" value="<%=listing.country%>" required>
+            <div class="invalid-feedback">
+                Country should be valid 
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-dark">Save</button>
+    </form>
+    <br/>
+    <br/>
+    <br/>
+</div>
+</body>
