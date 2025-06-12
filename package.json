@@ -1,17 +1,17 @@
 {
-  "engines": {
-    "node": "20.15.1"
-  },
   "name": "UrbanStay",
   "version": "1.0.0",
+  "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js"
   },
   "keywords": [],
   "author": "Ganesh S Harikant",
   "license": "ISC",
-  "description": "",
+  "engines": {
+    "node": "20.15.1"
+  },
   "dependencies": {
     "cloudinary": "^1.37.2",
     "connect-flash": "^0.1.1",
