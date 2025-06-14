@@ -81,7 +81,10 @@ app.use((req, res, next) => {
   res.locals.currentUser = req.user;
   next();
 });
-//routes    
+//routes   
+app.get("/", (req, res) => {
+    res.redirect("/listings"); // 👈 Redirects root to your main page
+}); 
 app.use("/listings",listingRouter)
 app.use("/listings/:id/reviews",reviewRouter)
 app.use("/",userRouter)
@@ -89,9 +92,7 @@ app.use("/listings", bookingRouter);
 app.use("/listings/:id/booking", bookingRouter); // For creating a booking
 app.use("/booking", bookingRouter); // For viewing user bookings
 
-app.get("/", (req, res) => {
-    res.redirect("/listings"); // 👈 Redirects root to your main page
-});
+
 app.all("*",(req,res,next)=>{
     next(new ExpressError(404,"Page not found!"));
 })
