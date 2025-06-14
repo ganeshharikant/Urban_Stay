@@ -88,6 +88,10 @@ app.use("/",userRouter)
 app.use("/listings", bookingRouter);
 app.use("/listings/:id/booking", bookingRouter); // For creating a booking
 app.use("/booking", bookingRouter); // For viewing user bookings
+
+app.get("/", (req, res) => {
+    res.redirect("/listings"); // 👈 Redirects root to your main page
+});
 app.all("*",(req,res,next)=>{
     next(new ExpressError(404,"Page not found!"));
 })
